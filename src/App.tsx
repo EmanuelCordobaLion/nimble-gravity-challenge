@@ -1,7 +1,13 @@
 import { useCandidateData } from './hooks/useCandidateData';
+import { useJobsList } from './hooks/useJobsList';
+import { JobList } from './components/JobList';
 
 function App() {
-  const { candidate, loading, error } = useCandidateData();
+  const { candidate, loading: candidateLoading, error: candidateError } = useCandidateData();
+  const { jobs, loading: jobsLoading, error: jobsError } = useJobsList();
+
+  const loading = candidateLoading || jobsLoading;
+  const error = candidateError || jobsError;
 
   if (loading) {
     return (
@@ -38,6 +44,13 @@ function App() {
         <p className="text-gray-600 mb-8">
           Welcome, {candidate.firstName} {candidate.lastName}
         </p>
+
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            Available Positions
+          </h2>
+          <JobList jobs={jobs} />
+        </div>
       </div>
     </div>
   );
