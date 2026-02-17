@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# Job Application Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for browsing and applying to job positions through an external API. Built as a technical challenge for Nimble Gravity recruitment process.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-time Job Listings**: Fetches and displays available positions from an external API
+- **Individual Application Forms**: Each position has its own repository URL input and submit button
+- **GitHub URL Validation**: Client-side validation ensures only valid GitHub repository URLs are accepted
+- **Loading States**: Visual feedback during data fetching and form submissions
+- **Error Handling**: Comprehensive error management with user-friendly messages
+- **Responsive Design**: Mobile-first approach ensuring optimal experience across all devices
+- **Accessibility**: ARIA attributes and semantic HTML for better screen reader support
+- **Success Feedback**: Clear visual confirmation when applications are submitted successfully
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React 19** - UI library
+- **TypeScript** - Type safety and better developer experience
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **React Hooks** - Custom hooks for data fetching and state management
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/      # Reusable UI components
+├── hooks/           # Custom React hooks for business logic
+├── services/        # API service layer
+├── types/           # TypeScript interfaces and types
+└── utils/           # Helper functions and validations
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/EmanuelCordobaLion/nimble-gravity-challenge.git
+cd nimble-gravity-challenge
 ```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+## Development Notes
+
+This project was developed following clean code principles and component-based architecture. Key highlights include:
+
+- **Separation of Concerns**: Business logic separated into custom hooks, keeping components focused on presentation
+- **Type Safety**: Full TypeScript implementation with strict typing for API responses and component props
+- **Reusable Components**: Modular design allowing easy maintenance and scalability
+- **Error Boundaries**: Graceful error handling at multiple levels (network, validation, API)
+- **DRY Principle**: Validation logic centralized in utility functions
+- **Accessibility First**: Proper ARIA labels, semantic HTML, and keyboard navigation support
+
+## Author
+
+**Emanuel Córdoba**
+
+[LinkedIn](https://www.linkedin.com/in/emanuel-cordoba-lion) • [GitHub](https://github.com/EmanuelCordobaLion)
