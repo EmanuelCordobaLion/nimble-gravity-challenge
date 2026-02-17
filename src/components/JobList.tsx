@@ -1,3 +1,4 @@
+import { JobCard } from './JobCard';
 import type { Job } from '../types/api.types';
 
 interface JobListProps {
@@ -16,14 +17,7 @@ export function JobList({ jobs }: JobListProps) {
   return (
     <div className="space-y-4">
       {jobs.map((job) => (
-        <div
-          key={job.id}
-          className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm"
-        >
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            {job.title}
-          </h3>
-        </div>
+        <JobCard key={job.id} job={job} />
       ))}
     </div>
   );
